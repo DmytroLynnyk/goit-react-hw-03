@@ -1,9 +1,5 @@
-import './App.css'
+import './App.css';
 
 export const App = () => {
-  return (
-    <>
-      Start of homework React 02
-    </>
-  )
+  return <>Start of homework React 03</>;
 };
