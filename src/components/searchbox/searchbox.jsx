@@ -5,6 +5,7 @@ export const SearchBox = ({ inputValue, setInputValue }) => {
     <div className={css.searchBox}>
       <p>Find contacts by name</p>
       <input
+        className={css.searchBoxInput}
         type="text"
         value={inputValue}
         onChange={evt => setInputValue(evt.target.value)}

@@ -1,8 +1,9 @@
 .searchBox {
-  width: 400px;
-  padding: 20px 0;
+  width: 360px;
+  padding: 16px 0;
 }
 
-.searchBox input {
-  width: 98%;
+.searchBoxInput {
+  width: 360px;
+  padding: 10px 20px;
 }
