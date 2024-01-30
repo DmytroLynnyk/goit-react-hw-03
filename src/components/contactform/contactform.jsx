@@ -5,14 +5,12 @@ import * as Yup from 'yup';
 
 const userSchema = Yup.object().shape({
   name: Yup.string()
-    .min(2, 'Too Short!')
+    .min(3, 'Too Short!')
     .max(50, 'Too Long!')
     .required('Required'),
-  number: Yup.number()
-    .positive()
-    .integer()
-    .min(8, 'Too Short!')
-    .max(15, 'Too Long!')
+  number: Yup.string()
+    .min(3, 'Too Short!')
+    .max(50, 'Too Long!')
     .required('Required'),
 });
 
@@ -33,7 +31,7 @@ export const ContactForm = ({ onAdd }) => {
           actions.resetForm();
         }}
       >
-        <Form className={css.contactForm}>
+        <Form className={css.contactForm} autoComplete="off">
           <div className={css.formBox}>
             <label htmlFor={nameFiealdId}>Name</label>
             <Field
@@ -41,7 +39,12 @@ export const ContactForm = ({ onAdd }) => {
               type="text"
               name="name"
               id={nameFiealdId}
-            ></Field>
+            />
+            <ErrorMessage
+              name="name"
+              component="span"
+              className={css.errorMsgForm}
+            />
           </div>
           <div className={css.formBox}>
             <label htmlFor={phoneFiealdId}>Phone</label>
@@ -50,7 +53,12 @@ export const ContactForm = ({ onAdd }) => {
               type="text"
               name="number"
               id={phoneFiealdId}
-            ></Field>
+            />
+            <ErrorMessage
+              name="number"
+              component="span"
+              className={css.errorMsgForm}
+            />
           </div>
           <button className={css.submitBtn} type="submit">
             Add contact
