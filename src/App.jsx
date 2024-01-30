@@ -1,5 +1,3 @@
-import * as Yup from 'yup';
-
 import { useState } from 'react';
 import './App.css';
 import { ContactList } from './components/contactlist/contactlist';

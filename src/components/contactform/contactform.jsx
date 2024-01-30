@@ -1,6 +1,20 @@
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import css from './contactform.module.css';
 import { useId } from 'react';
+import * as Yup from 'yup';
+
+const userSchema = Yup.object().shape({
+  name: Yup.string()
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Required'),
+  number: Yup.number()
+    .positive()
+    .integer()
+    .min(8, 'Too Short!')
+    .max(15, 'Too Long!')
+    .required('Required'),
+});
 
 export const ContactForm = ({ onAdd }) => {
   const nameFiealdId = useId();
@@ -13,8 +27,8 @@ export const ContactForm = ({ onAdd }) => {
           name: '',
           number: '',
         }}
+        validationSchema={userSchema}
         onSubmit={(values, actions) => {
-          console.log(values);
           onAdd({ id: Date.now(), ...values });
           actions.resetForm();
         }}
