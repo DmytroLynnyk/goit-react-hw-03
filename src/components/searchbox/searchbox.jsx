@@ -1,11 +1,13 @@
-export const SearchBox = (value, onChange) => {
+import css from './searchbox.module.css';
+
+export const SearchBox = ({ inputValue, setInputValue }) => {
   return (
-    <div>
+    <div className={css.searchBox}>
       <p>Find contacts by name</p>
       <input
         type="text"
-        value={value}
-        onChange={evt => onChange(evt.target.value)}
+        value={inputValue}
+        onChange={evt => setInputValue(evt.target.value)}
       />
     </div>
   );

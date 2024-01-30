@@ -14,12 +14,6 @@ export const App = () => {
   const [inputValue, setInputValue] = useState('');
   const [filterUsers, setFilterUsers] = useState(users);
 
-  // const handleChange = evt => {
-  //   setInputValue(evt.target.value);
-  // };
-
-  // console.log(inputValue);
-
   const visibleUsers = filterUsers.filter(filterUser =>
     filterUser.name.toLowerCase().includes(inputValue.toLowerCase())
   );
@@ -30,17 +24,7 @@ export const App = () => {
 
       {/* <ContactForm /> */}
 
-      {/* <SearchBox value={inputValue} onChange={setInputValue} /> */}
-
-      <div>
-        <p>Find contacts by name</p>
-        <input
-          type="text"
-          value={inputValue}
-          onChange={evt => setInputValue(evt.target.value)}
-        />
-      </div>
-
+      <SearchBox inputValue={inputValue} setInputValue={setInputValue} />
       <ContactList users={visibleUsers} />
     </div>
   );

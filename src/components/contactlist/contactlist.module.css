@@ -1,5 +1,6 @@
 .contactList {
-  padding: 20px 0;
+  width: 400px;
+  padding-bottom: 20px;
 }
 
 .contactItem:not(:last-child) {
