@@ -1,6 +1,6 @@
 .searchBox {
   width: 400px;
-  padding-bottom: 20px;
+  padding: 20px 0;
 }
 
 .searchBox input {

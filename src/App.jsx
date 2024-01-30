@@ -1,7 +1,10 @@
+import * as Yup from 'yup';
+
 import { useState } from 'react';
 import './App.css';
 import { ContactList } from './components/contactlist/contactlist';
 import { SearchBox } from './components/searchbox/searchbox';
+import { ContactForm } from './components/contactform/contactform';
 
 const users = [
   { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
@@ -18,12 +21,16 @@ export const App = () => {
     filterUser.name.toLowerCase().includes(inputValue.toLowerCase())
   );
 
+  const addUser = newUser => {
+    setFilterUsers(prevUsers => {
+      return [...prevUsers, newUser];
+    });
+  };
+
   return (
     <div>
       <h1>Phonebook</h1>
-
-      {/* <ContactForm /> */}
-
+      <ContactForm onAdd={addUser} />
       <SearchBox inputValue={inputValue} setInputValue={setInputValue} />
       <ContactList users={visibleUsers} />
     </div>

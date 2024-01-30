@@ -41,8 +41,12 @@ img {
 }
 
 button {
-  border: none;
   cursor: pointer;
+
+  font-size: larger;
+  padding: 8px;
+  border: 1px solid black;
+  border-radius: 4px;
 }
 
 /* Reset end */
