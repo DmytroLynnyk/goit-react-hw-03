@@ -20,8 +20,21 @@ export const App = () => {
   );
 
   const addUser = newUser => {
-    setFilterUsers(prevUsers => {
-      return [...prevUsers, newUser];
+    setFilterUsers(allUsers => {
+      return [
+        ...allUsers,
+        {
+          id: Date.now().toString(),
+          name: newUser.name,
+          number: newUser.number,
+        },
+      ];
+    });
+  };
+
+  const deletUser = () => {
+    setFilterUsers(allUsers => {
+      return allUsers.filter(user => user.id !== event.target.id);
     });
   };
 
@@ -30,7 +43,7 @@ export const App = () => {
       <h1>Phonebook</h1>
       <ContactForm onAdd={addUser} />
       <SearchBox inputValue={inputValue} setInputValue={setInputValue} />
-      <ContactList users={visibleUsers} />
+      <ContactList users={visibleUsers} deletUser={deletUser} />
     </div>
   );
 };
