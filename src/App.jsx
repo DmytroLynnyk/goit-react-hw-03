@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import { ContactList } from './components/contactlist/contactlist';
 import { SearchBox } from './components/searchbox/searchbox';
@@ -11,9 +11,21 @@ const users = [
   { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
 ];
 
+const getSevedUsers = () => {
+  const savedUsers = window.localStorage.getItem('saved-users');
+  if (JSON.parse(savedUsers) !== null) {
+    return JSON.parse(savedUsers);
+  }
+  return users;
+};
+
 export const App = () => {
   const [inputValue, setInputValue] = useState('');
-  const [filterUsers, setFilterUsers] = useState(users);
+  const [filterUsers, setFilterUsers] = useState(getSevedUsers);
+
+  useEffect(() => {
+    window.localStorage.setItem('saved-users', JSON.stringify(visibleUsers));
+  });
 
   const visibleUsers = filterUsers.filter(filterUser =>
     filterUser.name.toLowerCase().includes(inputValue.toLowerCase())
