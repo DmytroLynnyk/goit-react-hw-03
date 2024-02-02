@@ -37,16 +37,15 @@ export const App = () => {
         ...allUsers,
         {
           id: Date.now().toString(),
-          name: newUser.name,
-          number: newUser.number,
+          ...newUser,
         },
       ];
     });
   };
 
-  const deletUser = () => {
+  const deletUser = id => {
     setFilterUsers(allUsers => {
-      return allUsers.filter(user => user.id !== event.target.id);
+      return allUsers.filter(user => user.id !== id);
     });
   };
 
